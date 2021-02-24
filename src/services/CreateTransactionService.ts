@@ -15,8 +15,8 @@ class CreateTransactionService {
   }
 
   public execute({ title, value, type }: Request): Transaction {
-    if (type !== 'income' && type !== 'outcome') {
-      throw Error('Transaction type not found');
+    if (!['income', 'outcome'].includes(type)) {
+      throw Error('Transaction type not found!');
     }
 
     if (type === 'outcome') {
